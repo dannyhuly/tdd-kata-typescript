@@ -3,11 +3,10 @@ export function add(number: string): number {
         return 0;
     }
 
-    const [num1, num2] = number.split(',');
-    let total = parseInt(num1);
+    const total = number
+        .split(',')
+        .map((v) => parseInt(v))
+        .reduce((acu, number) => acu + number, 0)
 
-    if (num2) {
-        total += parseInt(num2);
-    }
     return total;
 }
