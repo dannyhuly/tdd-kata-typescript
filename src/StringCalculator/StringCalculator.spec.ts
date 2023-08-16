@@ -56,5 +56,16 @@ describe('StringCalculator', () => {
             // Assert
             expect(output).toEqual(3);
         })
+
+        it('should reject negative numbers', () => { 
+            // Arrange
+            const input = "//;\n-1;-2";
+
+            // Act
+            const addExec = add.bind(null, input);
+
+            // Assert
+            expect(addExec).toThrowError('Negative numbers aren\'t allowed -1,-2');
+        })
     })
 })
