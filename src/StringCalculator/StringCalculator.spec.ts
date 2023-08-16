@@ -1,6 +1,6 @@
 import { add } from "./StringCalculator";
 
-describe('StringCalculator',() => {
+describe('StringCalculator', () => {
     describe('add', () => {
         it('should return 0 on empty string', () => {
             // Arrange
@@ -44,6 +44,17 @@ describe('StringCalculator',() => {
 
             // Assert
             expect(output).toEqual(15);
+        })
+
+        it('should return the sum of two unknown amount of numbers separated by commas or newline', () => {
+            // Arrange
+            const input = "1\n2,3";
+
+            // Act
+            const output = add(input);
+
+            // Assert
+            expect(output).toEqual(6);
         })
     })
 })
