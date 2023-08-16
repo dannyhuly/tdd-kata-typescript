@@ -12,11 +12,29 @@ export function add(number: string): number {
         numberString = numberStr;
     }
 
-    const total = numberString
+    const parsedNumbers = numberString
         .replace('\n', delimiter)
         .split(delimiter)
         .map((v) => parseInt(v))
-        .reduce((acu, number) => acu + number, 0)
+
+
+    // check for negative numbers
+    checkForNegativeNumbers(parsedNumbers);
+
+    const total = parsedNumbers.reduce((acu, number) => acu + number, 0)
 
     return total;
+}
+
+function checkForNegativeNumbers(parsedNumbers: number[]) {
+    const negativeNumbers = parsedNumbers.reduce((arr, number) => {
+        if (number < 0) {
+            arr.push(number);
+        }
+        return arr;
+    }, [] as Array<number>);
+
+    if (negativeNumbers.length) {
+        throw new Error(`Negative numbers aren\'t allowed ${negativeNumbers.join(",")}`);
+    }
 }
