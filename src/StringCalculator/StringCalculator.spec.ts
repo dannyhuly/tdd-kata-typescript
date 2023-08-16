@@ -34,5 +34,16 @@ describe('StringCalculator',() => {
             // Assert
             expect(output).toEqual(3);
         })
+
+        it('should return the sum of two unknown amount of numbers separated by commas', () => {
+            // Arrange
+            const input = "1,2,3,4,5";
+
+            // Act
+            const output = add(input);
+
+            // Assert
+            expect(output).toEqual(15);
+        })
     })
 })
